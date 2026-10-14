@@ -1,0 +1,5 @@
+A base real pertence ao material de referência do professor:
+https://github.com/mramgti/api_dashboard
+
+Execute `python baixar_base.py` para baixar `1 - Base de Dados.xlsx` para esta pasta.
+O deploy no Render também baixa a planilha durante a etapa de build.
