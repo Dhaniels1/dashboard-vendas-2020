@@ -31,7 +31,7 @@ def menu(codigo, coluna, titulo, multi=True):
 
 def campo(nome, componente, nota=None):
     return html.Div([
-        html.Label(nome, className="filter-label"),
+        html.Label(nome, htmlFor=getattr(componente, "id", None), className="filter-label"),
         componente,
         html.Span(nota, className="filter-hint") if nota else None,
     ], className="filter-field")
@@ -102,6 +102,36 @@ app.layout = html.Div([
                                 n_clicks=0, className="export-button"),
                 ], className="hero-actions"),
             ], className="hero", id="visao-geral"),
+
+            html.Section([
+                html.Div([
+                    html.P("GUIA DE EXPLORAÇÃO", className="guide-kicker"),
+                    html.H2("Entenda o painel em poucos passos"),
+                    html.P("Acesse os indicadores, altere um filtro e observe como os gráficos "
+                           "respondem à sua seleção. Esta é uma análise acadêmica de 2020, "
+                           "não um acompanhamento de vendas em tempo real."),
+                ], className="guide-copy"),
+                html.Details([
+                    html.Summary("Ver o roteiro da demonstração"),
+                    html.Ol([
+                        html.Li("Confira o faturamento e a média por registro na visão geral."),
+                        html.Li("Escolha mês ou representante e compare os indicadores."),
+                        html.Li("Selecione um estado: as cidades disponíveis serão atualizadas."),
+                        html.Li("Explore o ranking de produtos e exporte os dados filtrados."),
+                        html.Li("Use Limpar filtros para retornar à visão consolidada."),
+                    ]),
+                    html.P("Média por registro = faturamento ÷ quantidade de vendas. "
+                           "Estados atendidos = quantidade de estados distintos na seleção.",
+                           className="guide-note"),
+                ], className="guide-details"),
+                html.Div([
+                    html.A("Explorar filtros ↓", href="#filtros", className="guide-action"),
+                    html.A("Ler guia técnico ↗",
+                           href="https://github.com/Dhaniels1/dashboard-vendas-2020/blob/main/docs/GUIA_DEMONSTRACAO.md",
+                           target="_blank", rel="noopener noreferrer",
+                           className="guide-secondary"),
+                ], className="guide-links"),
+            ], className="guide-panel", id="guia-uso"),
 
             html.Div([
                 html.Span("Overview", className="tab-label"),
@@ -177,7 +207,7 @@ app.layout = html.Div([
                 ),
             ], className="products-panel panel", id="produtos"),
             html.Footer([
-                "Visualização de Dados · Dash + Plotly Express · ",
+                "Projeto acadêmico · Dados de 2020 · Não são vendas em tempo real · ",
                 html.A("Fonte dos dados", href="https://github.com/mramgti/api_dashboard",
                        target="_blank", rel="noopener noreferrer"),
             ], className="footer"),
