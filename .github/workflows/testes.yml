@@ -21,4 +21,4 @@ jobs:
         run: python -m pip install -r requirements.txt
 
       - name: Testes com dados sintéticos
-        run: python -m unittest -v testes_auditoria
+        run: python -m unittest -v testes_auditoria testes_interface
