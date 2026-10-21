@@ -6,6 +6,10 @@ Painel gerencial interativo desenvolvido para a disciplina de **Visualização d
 
 **Código-fonte:** https://github.com/Dhaniels1/dashboard-vendas-2020
 
+## Guia de demonstração
+
+Para apresentar o projeto a professores ou recrutadores, consulte o **[roteiro visual, o diagrama de funcionamento e as verificações sugeridas](docs/GUIA_DEMONSTRACAO.md)**.
+
 ## Funcionalidades
 
 - **Indicadores:** faturamento total, quantidade de vendas, valor médio por registro e estados atendidos.
@@ -28,6 +32,8 @@ Painel gerencial interativo desenvolvido para a disciplina de **Visualização d
 | `dados.py` | Preparação e filtros da planilha |
 | `baixar_base.py` | Download dos dados |
 | `testes_auditoria.py` | Testes com dados sintéticos |
+| `testes_interface.py` | Verificação estática do guia e da sintaxe do painel |
+| `docs/GUIA_DEMONSTRACAO.md` | Roteiro visual de apresentação e arquitetura |
 | `assets/` | Estilos e recursos visuais |
 | `render.yaml` | Configuração de hospedagem Render |
 
@@ -71,10 +77,10 @@ Você também pode definir `DASHBOARD_DATA_PATH` para indicar um arquivo Excel o
 A suíte utiliza uma pequena base de vendas **sintética**, sem depender da planilha externa:
 
 ```bash
-python -m unittest -v testes_auditoria
+python -m unittest -v testes_auditoria testes_interface
 ```
 
-Os testes verificam a seleção de vendas do ano 2020, filtro Estado → Cidade, filtros combinados, agregações, formatação monetária, tratamento de dados inválidos e o comportamento de cidades obsoletas durante a atualização de filtros.
+Os testes verificam também a estrutura do guia e a sintaxe do aplicativo, além da seleção de vendas do ano 2020, filtro Estado → Cidade, filtros combinados, agregações, formatação monetária, tratamento de dados inválidos e o comportamento de cidades obsoletas durante a atualização de filtros.
 
 Um workflow em `.github/workflows/testes.yml` executa a suíte em pushes e pull requests. O código do site e os dados reais podem ser verificados separadamente acessando o serviço publicado.
 
